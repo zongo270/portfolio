@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serge-Antoine Keou Ketchiozo | Systems Defense & Cloud Architecture Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              950: '#040711',
+              900: '#080d1a',
+              850: '#0c1427',
+              800: '#101c36',
+              700: '#1a2e56',
+              cyan: '#00f0ff',
+              emerald: '#10b981',
+              blue: '#3b82f6',
+              accent: '#38bdf8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #040711;
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+    }
+    .grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    .glass-panel {
+      background: rgba(12, 20, 39, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    .glass-panel-hover:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+    }
+    .neon-text-cyan {
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+    }
+    .neon-border-cyan {
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resume-modal, #resume-modal * {
+        visibility: visible;
+      }
+      #resume-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-cyber-950 text-slate-200 antialiased selection:bg-cyber-cyan selection:text-cyber-950 min-h-screen flex flex-col justify-between relative overflow-x-hidden">
+
+  <!-- Background Ambient Glow & Grid -->
+  <div class="fixed inset-0 grid-pattern pointer-events-none z-0"></div>
+  <div class="fixed -top-40 -left-40 w-96 h-96 bg-cyber-blue/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed top-1/3 -right-40 w-96 h-96 bg-cyber-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed -bottom-40 left-1/3 w-96 h-96 bg-cyber-emerald/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-lg bg-cyber-900 border border-cyber-cyan/30 flex items-center justify-center font-mono font-bold text-cyber-cyan group-hover:neon-border-cyan transition-all">
+          SK
+        </div>
+        <div class="flex flex-col">
+          <span class="font-mono font-semibold tracking-wide text-slate-100 group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">
+            Serge-Antoine Keou
+          </span>
+          <span class="text-[10px] font-mono text-cyber-cyan/80 tracking-wider flex items-center gap-1.5">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyber-emerald animate-pulse"></span>
+            SYS_SEC // CLOUD_ARCH
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-7 text-xs font-mono uppercase tracking-wider">
+        <a href="#about" class="text-slate-400 hover:text-cyber-cyan transition-colors">01. Overview</a>
+        <a href="#education" class="text-slate-400 hover:text-cyber-cyan transition-colors">02. Academics</a>
+        <a href="#credentials" class="text-slate-400 hover:text-cyber-cyan transition-colors">03. Certifications</a>
+        <a href="#projects" class="text-slate-400 hover:text-cyber-cyan transition-colors">04. Projects</a>
+        <a href="#experience" class="text-slate-400 hover:text-cyber-cyan transition-colors">05. Experience</a>
+        <a href="#contact" class="text-slate-400 hover:text-cyber-cyan transition-colors">06. Uplink</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <button onclick="openResumeModal()" class="px-3.5 py-1.5 text-xs font-mono rounded border border-cyber-emerald/50 bg-cyber-emerald/10 text-cyber-emerald hover:bg-cyber-emerald hover:text-cyber-950 transition-all flex items-center space-x-1.5 font-medium shadow-sm">
+          <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+          <span>Curriculum Vitae</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-slate-800 px-6 py-4 space-y-3 font-mono text-xs uppercase tracking-wider">
+      <a href="#about" class="block text-slate-300 hover:text-cyber-cyan py-1">01. Overview</a>
+      <a href="#education" class="block text-slate-300 hover:text-cyber-cyan py-1">02. Academics</a>
+      <a href="#credentials" class="block text-slate-300 hover:text-cyber-cyan py-1">03. Certifications</a>
+      <a href="#projects" class="block text-slate-300 hover:text-cyber-cyan py-1">04. Projects</a>
+      <a href="#experience" class="block text-slate-300 hover:text-cyber-cyan py-1">05. Experience</a>
+      <a href="#contact" class="block text-slate-300 hover:text-cyber-cyan py-1">06. Uplink</a>
+      <div class="pt-2">
+        <button onclick="openResumeModal()" class="w-full py-2 text-xs font-mono rounded border border-cyber-emerald bg-cyber-emerald/10 text-cyber-emerald flex items-center justify-center space-x-2">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>View Verified Resume</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="z-10 flex-grow">
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full border border-cyber-cyan/30 bg-cyber-cyan/5 text-cyber-cyan text-xs font-mono">
+              <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-ping"></span>
+              <span>SENIOR B.S. INFORMATION TECHNOLOGY @ UCF</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+              Defending Systems. <br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-sky-400 to-cyber-emerald">
+                Architecting Cloud Security.
+              </span>
+            </h1>
+
+            <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+              I am <strong class="text-slate-100 font-semibold">Serge-Antoine Keou Ketchiozo</strong>, a systems technologist and aspiring Cloud Security Engineer specializing in multi-tier database architectures, defense-in-depth security, and cloud scalability. Equipped with verified AWS and Harvard CS50 certifications and field cybersecurity operations experience.
+            </p>
+
+            <div class="flex flex-wrap gap-4 pt-2 font-mono text-xs">
+              <a href="#projects" class="px-6 py-3 rounded-md bg-cyber-cyan text-cyber-950 font-bold hover:bg-cyan-300 transition-all flex items-center space-x-2 shadow-lg shadow-cyber-cyan/20">
+                <span>Inspect Architecture</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <button onclick="openResumeModal()" class="px-6 py-3 rounded-md border border-slate-700 bg-cyber-900/80 text-slate-300 hover:border-slate-500 hover:text-white transition-all flex items-center space-x-2">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Resume / CV</span>
+              </button>
+            </div>
+
+            <!-- Terminal status badge -->
+            <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-400 font-mono">
+              <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-cyber-cyan"></i>
+                <span>Orlando, Florida</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="languages" class="w-4 h-4 text-cyber-emerald"></i>
+                <span>English & French (Bilingual)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-sky-400"></i>
+                <span>NIST CSF & Zero Trust Ready</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right: Interactive Telemetry Card -->
+          <div class="lg:col-span-5">
+            <div class="glass-panel rounded-2xl p-6 border-cyber-cyan/20 relative shadow-2xl">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <div class="flex items-center space-x-2 font-mono text-xs text-slate-400">
+                  <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                  <span class="ml-2 text-slate-300 font-semibold">identity.profile.sh</span>
+                </div>
+                <span class="text-[10px] font-mono bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30 px-2 py-0.5 rounded">AUTHENTICATED</span>
+              </div>
+
+              <div class="font-mono text-xs space-y-3 leading-relaxed text-slate-300">
+                <p><span class="text-cyber-cyan">$</span> whoami</p>
+                <p class="text-slate-400 pl-4">Serge-Antoine Keou Ketchiozo</p>
+
+                <p><span class="text-cyber-cyan">$</span> cat university_status.json</p>
+                <div class="bg-cyber-950/80 p-3 rounded border border-slate-800/80 pl-4 text-sky-300">
+                  {<br>
+                  &nbsp;&nbsp;"institution": "University of Central Florida",<br>
+                  &nbsp;&nbsp;"degree": "B.S. in Information Technology",<br>
+                  &nbsp;&nbsp;"status": "Senior Standing",<br>
+                  &nbsp;&nbsp;"current_gpa": "3.1",<br>
+                  &nbsp;&nbsp;"expected_grad": "December 2026"<br>
+                  }
+                </div>
+
+                <p><span class="text-cyber-cyan">$</span> cat credentials_active.list</p>
+                <ul class="pl-4 space-y-1 text-slate-400">
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyber-emerald"></i>
+                    AWS Academy Graduate: Cloud Architecting
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyber-emerald"></i>
+                    AWS Academy Graduate: Cloud Foundations
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyber-emerald"></i>
+                    Harvard University CS50x Certificate
+                  </li>
+                </ul>
+
+                <p class="pt-2"><span class="text-cyber-cyan">$</span> uptime --mission</p>
+                <p class="text-cyber-emerald pl-4 font-semibold">Building resilient, zero-trust cloud infrastructure.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Overview & Skills Matrix -->
+    <section id="about" class="py-16 border-t border-slate-900 bg-cyber-900/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">Technical Competencies</h2>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Systems Engineering & Cloud Core</h3>
+          </div>
+          <div class="mt-4 md:mt-0 flex gap-2 font-mono text-xs">
+            <button onclick="filterSkills('all')" class="skill-btn active px-3 py-1.5 rounded bg-cyber-800 border border-cyber-cyan text-cyber-cyan">All</button>
+            <button onclick="filterSkills('security')" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Security & Cloud</button>
+            <button onclick="filterSkills('dev')" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Software & DB</button>
+            <button onclick="filterSkills('tools')" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Infrastructure</button>
+          </div>
+        </div>
+
+        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Skill Card 1 -->
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="security">
+            <div class="w-10 h-10 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan mb-4">
+              <i data-lucide="cloud" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">Cloud Infrastructure & AWS</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Hands-on multi-tier architecture design in AWS VPC, EC2, S3, IAM granular policies, Route53, and cost/resilience optimization.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-cyan-300">AWS IAM</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-cyan-300">VPC Peering</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-cyan-300">S3 Security</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-cyan-300">CloudWatch</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="security">
+            <div class="w-10 h-10 rounded-lg bg-cyber-emerald/10 border border-cyber-emerald/30 flex items-center justify-center text-cyber-emerald mb-4">
+              <i data-lucide="shield-alert" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">Cybersecurity & Forensics</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              CVSS vulnerability analysis, packet inspection, incident triage, BitLocker system deployments, and endpoint defense.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">Wireshark</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">CVSS v3</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">FTK Imager</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">Zero Trust</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="dev">
+            <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 mb-4">
+              <i data-lucide="database" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">Database Systems & JDBC</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Two-tier client-server enterprise architecture, relational modeling, complex SQL schemas, and Java Swing interfaces with PreparedStatements.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-sky-300">MySQL Server</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-sky-300">Java JDBC</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-sky-300">Java Swing</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-sky-300">Relational DB</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="dev">
+            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-4">
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">Software Development</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Object-oriented architecture and algorithms in C, Java, Python, and modern web application logic with HTML5, CSS3, and JavaScript.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-indigo-300">Java Core</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-indigo-300">C Language</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-indigo-300">Python 3</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-indigo-300">JavaScript</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 5 -->
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="tools">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+              <i data-lucide="terminal" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">Operating Systems & CLI</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Dual-environment administration across Windows 11 with WSL2, Ubuntu Server, Kali Linux security testing environments, and PowerShell scripting.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">WSL2 / Linux</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">Bash / Shell</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">PowerShell LPO</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">Kali Linux</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 6 -->
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="tools">
+            <div class="w-10 h-10 rounded-lg bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-4">
+              <i data-lucide="network" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">Networking & Protocols</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              TCP/IP stack, subnets, CIDR notation, DNS hierarchy, firewall access control lists (ACLs), TLS handshakes, and network traffic modeling.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-pink-300">TCP/IP</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-pink-300">Subnetting</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-pink-300">DNS/DHCP</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-pink-300">Routing Protocols</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Education & Academic Milestones -->
+    <section id="education" class="py-16 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-12">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">02. Academic Foundation</h2>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">University Degree & Specialized Coursework</h3>
+          <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+            Integrating deep computational theory, network security, enterprise database systems, and cloud management.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- UCF Bachelor Card (8 Cols) -->
+          <div class="lg:col-span-8 glass-panel rounded-2xl p-8 border-cyber-cyan/30 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-yellow-500/5 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-6 mb-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center text-yellow-400 shrink-0 font-bold font-mono">
+                  UCF
+                </div>
+                <div>
+                  <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-yellow-400/10 text-yellow-300 border border-yellow-400/20 text-[11px] font-mono mb-1">
+                    B.S. INFORMATION TECHNOLOGY
+                  </div>
+                  <h4 class="text-xl font-bold text-white">University of Central Florida</h4>
+                  <p class="text-slate-400 text-xs font-mono">College of Engineering and Computer Science &bull; Orlando, FL</p>
+                </div>
+              </div>
+
+              <div class="sm:text-right font-mono text-xs">
+                <span class="inline-block px-3 py-1 rounded-full bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald font-semibold mb-1">
+                  GPA: 3.1
+                </span>
+                <p class="text-slate-400">Senior Standing &bull; Exp: Dec 2026</p>
+              </div>
+            </div>
+
+            <!-- Degree Focus Overview -->
+            <div class="space-y-4 text-sm text-slate-300 leading-relaxed font-light mb-6">
+              <p>
+                The <strong>Bachelor of Science in Information Technology</strong> at UCF prepares students to design, implement, configure, and secure mission-critical computing infrastructure. The curriculum balances enterprise network engineering, modern database architecture, security governance, and scalable cloud computing.
+              </p>
+              <div class="p-4 rounded-xl bg-cyber-950/70 border border-slate-800/80 text-xs font-mono space-y-2">
+                <div class="text-cyber-cyan font-semibold flex items-center gap-2">
+                  <i data-lucide="layers" class="w-4 h-4"></i>
+                  <span>Key Competency Tracks Studied at UCF:</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-400 pt-1">
+                  <div>&bull; Network Security & Privacy Architecture</div>
+                  <div>&bull; Two-Tier & Distributed Database Engineering</div>
+                  <div>&bull; Operating System Principles & WSL2/Linux</div>
+                  <div>&bull; Enterprise Systems Analysis & Design</div>
+                  <div>&bull; Discrete Structures & Algorithmics</div>
+                  <div>&bull; Technical Communication & IT Project Mgmt</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800/80 text-xs font-mono">
+              <a href="https://www.ucf.edu/degree/information-technology-bs/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-cyber-cyan hover:underline">
+                <span>View UCF Official Degree Catalog</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+              <span class="text-slate-500">Accredited by the Computing Accreditation Commission of ABET</span>
+            </div>
+          </div>
+
+          <!-- Academic Timeline / Prior Diplomas (4 Cols) -->
+          <div class="lg:col-span-4 space-y-6">
+            
+            <!-- EFSC Diploma Card -->
+            <div class="glass-panel rounded-2xl p-6 border-emerald-500/30 relative">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                  ASSOCIATE DEGREE (A.S.)
+                </span>
+                <span class="text-xs font-mono text-slate-400">May 2023</span>
+              </div>
+              <h4 class="font-bold text-white text-base mb-1">Eastern Florida State College</h4>
+              <p class="text-xs text-cyber-emerald font-mono mb-2">Computer Programming and Analysis</p>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                Completed core software foundations, object-oriented application design (Java, C#, C++, Python), relational data design, and client-side web development.
+              </p>
+              <div class="text-[11px] font-mono text-slate-400 border-t border-slate-800/80 pt-3">
+                <a href="https://www.easternflorida.edu/academics/computer-programming-and-analysis/" target="_blank" rel="noopener noreferrer" class="text-cyber-cyan hover:underline inline-flex items-center gap-1">
+                  <span>EFSC Curriculum Catalog</span>
+                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- High School Diploma Card -->
+            <div class="glass-panel rounded-2xl p-6 border-slate-800">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                  BACCALAURÉAT
+                </span>
+                <span class="text-xs font-mono text-slate-400">July 2019</span>
+              </div>
+              <h4 class="font-bold text-white text-sm">Lycée Polyvalent de Cachan</h4>
+              <p class="text-xs text-slate-400 font-mono">Cachan, France</p>
+              <p class="text-slate-400 text-xs mt-2">
+                French High School Diploma with scientific and technical concentration. Bilingual fluency in French and English.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Verified Credentials & Badges -->
+    <section id="credentials" class="py-16 bg-cyber-900/40 border-y border-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">03. Validated Competency</h2>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Verified Certifications & Digital Badges</h3>
+          </div>
+          <p class="text-slate-400 text-xs font-mono mt-2 md:mt-0">Click any credential to verify directly on Credly or edX</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Credential 1: AWS Architecting -->
+          <a href="https://www.credly.com/badges/a5a0310a-7a22-44f0-96bf-ec8ed261aae7/linked_in_profile" target="_blank" rel="noopener noreferrer" class="glass-panel rounded-2xl p-6 glass-panel-hover transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform">
+                  <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30 font-semibold">
+                  VERIFIED BADGE
+                </span>
+              </div>
+              <span class="text-xs font-mono text-amber-400">AWS Academy</span>
+              <h4 class="text-lg font-bold text-white group-hover:text-cyber-cyan transition-colors mt-1 mb-2">
+                Cloud Architecting
+              </h4>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                Demonstrated competency in designing highly available, cost-effective, decoupled, and secure cloud environments on Amazon Web Services.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-cyber-cyan transition-colors">
+              <span>Issuer: Amazon Web Services</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+          <!-- Credential 2: AWS Foundations -->
+          <a href="https://www.credly.com/badges/d9fb8645-05a0-434b-a8a6-154af4f26179/linked_in_profile" target="_blank" rel="noopener noreferrer" class="glass-panel rounded-2xl p-6 glass-panel-hover transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:scale-105 transition-transform">
+                  <i data-lucide="shield" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30 font-semibold">
+                  VERIFIED BADGE
+                </span>
+              </div>
+              <span class="text-xs font-mono text-orange-400">AWS Academy</span>
+              <h4 class="text-lg font-bold text-white group-hover:text-cyber-cyan transition-colors mt-1 mb-2">
+                Cloud Foundations
+              </h4>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                Validated foundational knowledge of AWS cloud security principles, compliance frameworks, billing, storage, compute, and networking fundamentals.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-cyber-cyan transition-colors">
+              <span>Issuer: Amazon Web Services</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+          <!-- Credential 3: Harvard CS50x -->
+          <a href="https://courses.edx.org/certificates/e45aa3ed6553463681b3da7a0de2196d" target="_blank" rel="noopener noreferrer" class="glass-panel rounded-2xl p-6 glass-panel-hover transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-105 transition-transform">
+                  <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/30 font-semibold">
+                  VERIFIED CERTIFICATE
+                </span>
+              </div>
+              <span class="text-xs font-mono text-red-400">HarvardX / edX</span>
+              <h4 class="text-lg font-bold text-white group-hover:text-cyber-cyan transition-colors mt-1 mb-2">
+                CS50x: Computer Science
+              </h4>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                Completed rigorous 12-week intensive computer science program covering memory management, low-level pointers in C, Python, algorithms, data structures, and web development.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-cyber-cyan transition-colors">
+              <span>Issuer: Harvard University</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Featured Engineering Projects -->
+    <section id="projects" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-12">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">04. Engineering Portfolio</h2>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Systems & Security Projects</h3>
+          <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+            Applied software systems, database engineering, cloud security gateways, and multi-user client-server implementations.
+          </p>
+        </div>
+
+        <div class="space-y-10">
+
+          <!-- Project 0: CNT 4714 Project 3 Client-Server DB System -->
+          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/40 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono font-semibold">
+                    ENTERPRISE DATABASE ARCHITECTURE
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-xs font-mono">
+                    CNT 4714 FALL 2026
+                  </span>
+                </div>
+
+                <h4 class="text-2xl font-bold text-white tracking-tight">
+                  Two-Tier Client-Server Database System with Dual GUIs &amp; RBAC Telemetry
+                </h4>
+
+                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                  Engineered an enterprise-grade two-tier client-server relational database management architecture in Java Swing utilizing JDBC. Features role-based access control (RBAC) across root and restricted client users (<code class="text-cyber-cyan">client1</code>, <code class="text-cyber-cyan">client2</code>), paired with an automated background telemetry subsystem (<code class="text-cyber-cyan">project3app</code>) logging query execution counts into a segregated auditing schema (<code class="text-cyber-cyan">operationslog</code>) accessed by a dedicated accounting console (<code class="text-cyber-cyan">theaccountant</code>).
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-400 pt-2">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>PreparedStatement Sanitization &amp; Injection Defense</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Pre-Socket Properties Credential Validation</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Dual GUI: Client Console + Specialized Audit App</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Multi-Schema Segregation (project3, bikedb, opslog)</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Java Swing GUI</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">JDBC 9.0</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">MySQL Server</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Fine-Grained RBAC</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Audit Telemetry</span>
+                </div>
+              </div>
+
+              <!-- Action Card on Right -->
+              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Project Telemetry</div>
+                <div class="text-3xl font-extrabold text-cyber-cyan">100 / 100</div>
+                <p class="text-[11px] text-slate-400 leading-normal">
+                  Tested across 43 verified execution states &amp; transaction logging runs.
+                </p>
+                <button onclick="openProject3Modal()" class="w-full py-2.5 rounded bg-cyber-cyan text-cyber-950 text-xs font-bold hover:bg-cyan-300 transition-all flex items-center justify-center space-x-1.5 shadow-md shadow-cyber-cyan/10">
+                  <i data-lucide="scan" class="w-4 h-4"></i>
+                  <span>View System Architecture &amp; RBAC Matrix</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 0.5: CNT 4714 Project 2 Banking Simulator -->
+          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-emerald/40 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-xs font-mono font-semibold">
+                    CONCURRENT SYSTEMS &amp; REGULATORY TELEMETRY
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono">
+                    CNT 4714 PROJECT 2
+                  </span>
+                </div>
+
+                <h4 class="text-2xl font-bold text-white tracking-tight">
+                  Multithreaded Banking &amp; Regulatory Currency Transaction Simulator
+                </h4>
+
+                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                  Architected a high-throughput, multi-agent concurrent banking simulator in Java utilizing <code class="text-cyber-cyan">java.util.concurrent.locks.ReentrantLock</code> and explicit condition signaling. Orchestrated 19 concurrent thread agents (5 Depositors, 10 Withdrawers, 2 Transfer Agents, 1 Internal Auditor, and 1 U.S. Treasury Regulatory Auditor) over shared account resources, enforcing mutual exclusion, deadlock avoidance, and automated Money Laundering Suppression Act (1994) compliance logging.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-400 pt-2">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Explicit ReentrantLock Mutual Exclusion (No Monitors)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Automated CTR Flagging (Withdrawals &gt; $90, Deposits &gt; $450)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Multi-Account Simultaneous Deadlock-Free Atomic Audits</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Real-time transactions.tsv Regulatory Ledger</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">Java Concurrency</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">ReentrantLocks &amp; Conditions</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">ThreadPoolExecutor</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">Audit Compliance</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">TSV Audit Logging</span>
+                </div>
+              </div>
+
+              <!-- Action Card on Right -->
+              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Concurrency Metrics</div>
+                <div class="text-3xl font-extrabold text-cyber-emerald">750+ Txs</div>
+                <p class="text-[11px] text-slate-400 leading-normal">
+                  Verified across 19 cooperating agents with zero deadlocks or lost updates.
+                </p>
+                <button onclick="openProject2Modal()" class="w-full py-2.5 rounded bg-cyber-emerald text-cyber-950 text-xs font-bold hover:bg-emerald-300 transition-all flex items-center justify-center space-x-1.5 shadow-md shadow-cyber-emerald/10">
+                  <i data-lucide="cpu" class="w-4 h-4"></i>
+                  <span>View Concurrency Architecture &amp; Telemetry</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 1: Cloud & AI Security Gateway -->
+          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/30 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono font-semibold">
+                    CLOUD SECURITY INFRASTRUCTURE
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-xs font-mono">
+                    ZERO TRUST
+                  </span>
+                </div>
+
+                <h4 class="text-2xl font-bold text-white tracking-tight">
+                  Hardened Multi-Tenant AI Gateway &amp; Zero-Trust Reverse Proxy
+                </h4>
+
+                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                  Designed a production-ready asynchronous API reverse proxy for multi-tenant microservices. Integrates automated PII redaction (Presidio Engine), token-bucket rate limiting via Redis, structured audit logging, and prompt-injection firewall inspection before requests hit backend LLM endpoints.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-400 pt-2">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Redis-backed Distributed Token Bucket Rate Limiting</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>PII Data Masking &amp; Anonymization Pipeline</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Dockerized Container Security Architecture</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>NIST CSF Aligned Telemetry &amp; Access Control</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Python 3.11</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">FastAPI</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Redis</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Docker</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Cloud Security</span>
+                </div>
+              </div>
+
+              <!-- Visual Architecture Card -->
+              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Gateway Latency</div>
+                <div class="text-3xl font-extrabold text-cyber-cyan">&lt; 14ms</div>
+                <p class="text-[11px] text-slate-400 leading-normal">
+                  Sub-millisecond token verification with asynchronous Redis pipelining.
+                </p>
+                <button onclick="openGatewayModal()" class="w-full py-2.5 rounded bg-cyber-800 border border-cyber-cyan/40 text-cyber-cyan text-xs font-bold hover:bg-cyber-700 transition-all flex items-center justify-center space-x-1.5">
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                  <span>Architecture Deep Dive</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Nile Dot Com E-Store & Inventory DB -->
+          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-slate-800 relative">
+            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono font-semibold">
+                    ENTERPRISE JAVA APPLICATION
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 text-xs font-mono">
+                    GUI &bull; INVENTORY TRANSACTION LOGIC
+                  </span>
+                </div>
+
+                <h4 class="text-2xl font-bold text-white tracking-tight">
+                  Nile Dot Com E-Store Application &amp; Automated Ledger System
+                </h4>
+
+                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                  Constructed a standalone Java GUI desktop application managing shopping cart states, item lookups, automated subtotaling with state sales tax calculation, and synchronized transaction recording in an audit-ready CSV ledger. Built with robust input validation, dynamic inventory management, and invoice generation.
+                </p>
+
+                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">Java Swing</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">AWT Event Dispatch</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">CSV Ledger</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">Transaction Logging</span>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Design Paradigm</div>
+                <div class="text-lg font-bold text-white">MVC Event Architecture</div>
+                <p class="text-[11px] text-slate-400 leading-normal">
+                  Strict separation of view controllers, calculation engine, and invoice persistence.
+                </p>
+                <div class="text-xs text-cyber-emerald flex items-center justify-center gap-1">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                  <span>Completed &amp; Validated</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: World Capitals Interactive Quiz (Harvard CS50x Capstone) -->
+          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-slate-800 relative">
+            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono font-semibold">
+                    HARVARD CS50x FINAL CAPSTONE
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 text-xs font-mono">
+                    ALGORITHMIC ENGINE
+                  </span>
+                </div>
+
+                <h4 class="text-2xl font-bold text-white tracking-tight">
+                  World Capitals Interactive Assessment Engine
+                </h4>
+
+                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                  Engineered an interactive global geography assessment engine developed as the capstone project for Harvard University's CS50x. Implements randomized question queuing, multiple difficulty tiers, real-time countdown timer listeners, dynamic scoring models, and persistent session records.
+                </p>
+
+                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-red-300 border border-slate-700">JavaScript</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-red-300 border border-slate-700">HTML5 / CSS3</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-red-300 border border-slate-700">DOM Engine</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-red-300 border border-slate-700">Fisher-Yates Shuffle</span>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Repository</div>
+                <a href="https://github.com/zongo270/my-cs50-project" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded bg-cyber-800 border border-red-500/40 text-red-300 text-xs font-bold hover:bg-cyber-700 transition-all flex items-center justify-center space-x-1.5">
+                  <i data-lucide="github" class="w-4 h-4"></i>
+                  <span>Inspect Source Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Professional Field Experience -->
+    <section id="experience" class="py-16 bg-cyber-900/30 border-t border-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-12">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">05. Professional Track Record</h2>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Field Engineering &amp; Operational Roles</h3>
+        </div>
+
+        <div class="relative border-l-2 border-slate-800 ml-4 md:ml-8 pl-6 md:pl-8 space-y-12">
+          
+          <!-- Experience 1: Cybastion -->
+          <div class="relative group">
+            <!-- Timeline Node Indicator -->
+            <div class="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-cyber-950 border-2 border-cyber-cyan group-hover:bg-cyber-cyan transition-colors"></div>
+
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/30">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <span class="text-xs font-mono text-cyber-cyan font-semibold">Cybastion Cybersecurity</span>
+                  <h4 class="text-xl font-bold text-white">Cybersecurity Engineering Intern</h4>
+                </div>
+                <div class="text-xs font-mono text-slate-400 sm:text-right">
+                  <span class="px-2 py-0.5 rounded bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/20">Abidjan, Côte d'Ivoire</span>
+                  <div class="mt-1">July 2025 &ndash; August 2025</div>
+                </div>
+              </div>
+
+              <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
+                  <span><strong>Vulnerability Management &amp; CVSS Scoring:</strong> Conducted system-wide vulnerability scans, analyzed network exposure scores, and mapped remediation strategies prioritizing Common Vulnerability Scoring System (CVSS v3) risk levels.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
+                  <span><strong>Intrusion Analysis &amp; Incident Logging:</strong> Analyzed centralized authentication and server logs to triage Indicators of Compromise (IoCs), identify distributed brute-force vectors, and isolate credential-stuffing patterns.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
+                  <span><strong>Secure Baseline Configuration:</strong> Authored and automated local policy object (LPO) USB device restrictions using PowerShell, secured master BitLocker encryption keys, and configured system deployment baselines.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
+                  <span><strong>Digital Forensics &amp; Packet Analysis:</strong> Executed device image captures with FTK Imager and performed deep packet inspection using Wireshark to investigate simulated network intrusion pathways.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
+                  <span><strong>SOC / CSIRT Operations Support:</strong> Collaborated on Defense in Depth and Zero-Trust network segmentation models, supporting the national security operations framework.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience 2: Supermarket Cora -->
+          <div class="relative group">
+            <div class="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-cyber-950 border-2 border-slate-600 group-hover:border-white transition-colors"></div>
+
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <span class="text-xs font-mono text-slate-400 font-semibold">Cora Supermarché</span>
+                  <h4 class="text-lg font-bold text-white">Logistics &amp; Customer Inventory Associate</h4>
+                </div>
+                <div class="text-xs font-mono text-slate-400 sm:text-right">
+                  <span>Cachan, France</span>
+                  <div class="mt-1">September 2020 &ndash; October 2020</div>
+                </div>
+              </div>
+
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-400 font-light leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                  <span>Managed daily retail stock rotation and strict product availability metrics across high-volume departments.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                  <span>Assisted multicultural French clientele with merchandise inquiries and maintained rigorous shelf replenishment standards under pressure.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 6: Contact Uplink -->
+    <section id="contact" class="py-20 relative">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-cyber-cyan/30 bg-cyber-cyan/5 text-cyber-cyan text-xs font-mono mb-4">
+          <i data-lucide="radio" class="w-3.5 h-3.5 animate-pulse"></i>
+          <span>COMMUNICATION CONSOLE READY</span>
+        </div>
+
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+          Initiate Engineering Contact
+        </h3>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-8 font-light">
+          Open to Cloud Security Engineering, Cloud Architecture, DevOps, and Enterprise Systems roles. Let's discuss infrastructure resilience.
+        </p>
+
+        <div class="glass-panel rounded-2xl p-8 max-w-3xl mx-auto border-cyber-cyan/30 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+            
+            <!-- Email 1 -->
+            <div class="p-4 rounded-xl bg-cyber-950/80 border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-slate-500 text-[10px] block mb-1">PERSONAL UPLINK</span>
+                <span class="text-slate-200 select-all font-semibold break-all">keouksa@gmail.com</span>
+              </div>
+              <button onclick="copyToClipboard('keouksa@gmail.com', this)" class="mt-3 px-2.5 py-1.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan hover:bg-cyber-cyan hover:text-cyber-950 transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Email</span>
+              </button>
+            </div>
+
+            <!-- Email 2 (UCF) -->
+            <div class="p-4 rounded-xl bg-cyber-950/80 border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-slate-500 text-[10px] block mb-1">UCF ACADEMIC UPLINK</span>
+                <span class="text-slate-200 select-all font-semibold break-all">se337943@ucf.edu</span>
+              </div>
+              <button onclick="copyToClipboard('se337943@ucf.edu', this)" class="mt-3 px-2.5 py-1.5 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald hover:bg-cyber-emerald hover:text-cyber-950 transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Email</span>
+              </button>
+            </div>
+
+            <!-- Phone -->
+            <div class="p-4 rounded-xl bg-cyber-950/80 border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-slate-500 text-[10px] block mb-1">TELEPHONY / DIRECT</span>
+                <span class="text-slate-200 select-all font-semibold">(321) 417-4036</span>
+              </div>
+              <button onclick="copyToClipboard('3214174036', this)" class="mt-3 px-2.5 py-1.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-400 hover:bg-sky-500 hover:text-cyber-950 transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Phone</span>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4 border-t border-slate-800 text-xs font-mono">
+            <a href="https://www.linkedin.com/in/serge-antoine-keou-ketchiozo-66b428137/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-lg border border-slate-700 hover:border-cyber-cyan text-slate-300 hover:text-white transition-all flex items-center gap-2">
+              <i data-lucide="linkedin" class="w-4 h-4 text-cyber-cyan"></i>
+              <span>LinkedIn Profile</span>
+            </a>
+            <a href="https://github.com/zongo270" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-lg border border-slate-700 hover:border-cyber-emerald text-slate-300 hover:text-white transition-all flex items-center gap-2">
+              <i data-lucide="github" class="w-4 h-4 text-cyber-emerald"></i>
+              <span>GitHub Account</span>
+            </a>
+            <button onclick="openResumeModal()" class="px-5 py-2.5 rounded-lg border border-slate-700 hover:border-yellow-400 text-slate-300 hover:text-white transition-all flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-yellow-400"></i>
+              <span>View / Print Resume</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-cyber-950 py-8 text-center text-xs font-mono text-slate-500 z-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        &copy; 2026 Serge-Antoine Keou Ketchiozo. All system rights reserved.
+      </div>
+      <div class="flex items-center space-x-6 text-slate-400">
+        <span>Orlando, FL 32817</span>
+        <span>UCF Senior B.S. IT</span>
+        <span class="text-cyber-cyan">Status: Available for Hire</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: Project 3 (CNT 4714) Architecture & RBAC -->
+  <div id="project3-modal" class="fixed inset-0 z-50 hidden bg-cyber-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-panel max-w-4xl w-full rounded-2xl border border-cyber-cyan/40 p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono text-cyber-cyan uppercase tracking-wider">CNT 4714 Project 3 Architecture</span>
+          <h3 class="text-xl font-bold text-white mt-1">Enterprise Two-Tier Client-Server Database System</h3>
+        </div>
+        <button onclick="closeProject3Modal()" class="text-slate-400 hover:text-white p-2">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Architecture Topology Diagram -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-mono font-semibold text-slate-200 flex items-center gap-2">
+          <i data-lucide="git-merge" class="w-4 h-4 text-cyber-cyan"></i>
+          <span>Multi-Tier Topological Breakdown</span>
+        </h4>
+        <div class="bg-cyber-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 space-y-3">
+          <div class="p-3 bg-slate-900/80 rounded border border-slate-700/80">
+            <span class="text-cyber-cyan font-bold">[1. Client Layer]</span><br>
+            &bull; <strong>SQLClientApp:</strong> Main Java GUI for general users (root, client1, client2) with dynamic properties file dropdowns &amp; credential verification.<br>
+            &bull; <strong>TheAccountantApp:</strong> Hardened specialized GUI console restricted exclusively to theaccountant user for transaction auditing.
+          </div>
+          <div class="p-3 bg-slate-900/80 rounded border border-slate-700/80">
+            <span class="text-cyber-emerald font-bold">[2. Application / Helper Layer]</span><br>
+            &bull; <strong>ResultSetTableModel:</strong> Bridges JDBC result sets to Swing JTable with dynamic metadata column extraction.<br>
+            &bull; <strong>OperationsLogger:</strong> Transparent background service using application-level credentials (project3app) to increment query/update counters.
+          </div>
+          <div class="p-3 bg-slate-900/80 rounded border border-slate-700/80">
+            <span class="text-yellow-400 font-bold">[3. Database Tier (MySQL Server)]</span><br>
+            &bull; <strong>project3:</strong> Primary transactional database.<br>
+            &bull; <strong>bikedb:</strong> Historical cycling races and riders database.<br>
+            &bull; <strong>operationslog:</strong> Segregated auditing database with operationscount table tracking per-user metrics.
+          </div>
+        </div>
+      </div>
+
+      <!-- RBAC Matrix Table -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-mono font-semibold text-slate-200 flex items-center gap-2">
+          <i data-lucide="lock" class="w-4 h-4 text-cyber-emerald"></i>
+          <span>Role-Based Access Control (RBAC) Privilege Matrix</span>
+        </h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs border border-slate-800">
+            <thead class="bg-cyber-900 text-cyber-cyan">
+              <tr>
+                <th class="p-2.5 border-b border-slate-800">User Identity</th>
+                <th class="p-2.5 border-b border-slate-800">Target Schema</th>
+                <th class="p-2.5 border-b border-slate-800">Granted Privileges</th>
+                <th class="p-2.5 border-b border-slate-800">Access Scope &amp; Restrictions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 text-slate-300">
+              <tr>
+                <td class="p-2.5 text-white font-bold">root</td>
+                <td class="p-2.5 text-slate-400">All Schemas</td>
+                <td class="p-2.5 text-cyber-emerald">ALL PRIVILEGES</td>
+                <td class="p-2.5">Full administrative DDL/DML access.</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">client1</td>
+                <td class="p-2.5 text-slate-400">project3, bikedb</td>
+                <td class="p-2.5 text-sky-400">SELECT</td>
+                <td class="p-2.5">Read-only. DDL and UPDATE/INSERT strictly denied.</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">client2</td>
+                <td class="p-2.5 text-slate-400">project3, bikedb</td>
+                <td class="p-2.5 text-amber-400">SELECT, UPDATE</td>
+                <td class="p-2.5">Read &amp; Update enabled. DROP/DELETE/INSERT restricted.</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">project3app</td>
+                <td class="p-2.5 text-slate-400">operationslog</td>
+                <td class="p-2.5 text-cyber-emerald">SELECT, INSERT, UPDATE</td>
+                <td class="p-2.5">Application-only telemetry engine; invisible to end users.</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">theaccountant</td>
+                <td class="p-2.5 text-slate-400">operationslog</td>
+                <td class="p-2.5 text-indigo-400">SELECT</td>
+                <td class="p-2.5">Auditing specialist console; read-only operations count.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Security Guardrails -->
+      <div class="p-4 rounded-xl bg-cyber-900/60 border border-slate-800 space-y-2 text-xs font-mono text-slate-400">
+        <div class="text-cyber-cyan font-bold">Enterprise Security Implementation Details:</div>
+        <p>&bull; <strong>Pre-Socket Verification:</strong> Application reads selected <code class="text-slate-200">username.properties</code> and compares against GUI user credentials prior to invoking the JDBC driver, completely preventing socket leak attempts on credential mismatch.</p>
+        <p>&bull; <strong>PreparedStatement Defense:</strong> Enforces parameterized execution for client user commands to prevent SQL injection vulnerabilities.</p>
+        <p>&bull; <strong>Exception Handling:</strong> Catches SQLException states and displays formatted diagnostic dialogs without crashing active user sessions.</p>
+      </div>
+
+      <div class="text-right pt-2">
+        <button onclick="closeProject3Modal()" class="px-5 py-2 rounded bg-slate-800 text-white font-mono text-xs hover:bg-slate-700 transition-colors">
+          Close Architecture View
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL 2: Project 2 (CNT 4714) Concurrency Architecture -->
+  <div id="project2-modal" class="fixed inset-0 z-50 hidden bg-cyber-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-panel max-w-4xl w-full rounded-2xl border border-cyber-emerald/40 p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono text-cyber-emerald uppercase tracking-wider">CNT 4714 Project 2 Concurrency Architecture</span>
+          <h3 class="text-xl font-bold text-white mt-1">Synchronized Multithreaded Banking &amp; Regulatory Simulator</h3>
+        </div>
+        <button onclick="closeProject2Modal()" class="text-slate-400 hover:text-white p-2">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Concurrency System Breakdown -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-mono font-semibold text-slate-200 flex items-center gap-2">
+          <i data-lucide="cpu" class="w-4 h-4 text-cyber-emerald"></i>
+          <span>Multi-Agent Thread Topology &amp; Lock Protocol</span>
+        </h4>
+        <div class="bg-cyber-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 space-y-3">
+          <div class="p-3 bg-slate-900/80 rounded border border-slate-700/80">
+            <span class="text-cyber-emerald font-bold">[1. Agent Workpool Architecture (19 Simultaneous Threads)]</span><br>
+            &bull; <strong>5 Depositor Agents (DT0&ndash;DT4):</strong> Generate random credits ($1&ndash;$600) into randomly selected accounts. Never block; signal condition variables on every completed deposit.<br>
+            &bull; <strong>10 Withdrawal Agents (WT0&ndash;WT9):</strong> Request debits ($1&ndash;$99). Block on insufficient funds using Condition await() until signaled.<br>
+            &bull; <strong>2 Transfer Agents (TR0&ndash;TR1):</strong> Execute atomic inter-account balance migrations holding locks on both accounts simultaneously.<br>
+            &bull; <strong>1 Internal Auditor &amp; 1 U.S. Treasury Auditor:</strong> Perform atomic system-wide audits verifying combined liquidity across both accounts simultaneously.
+          </div>
+          <div class="p-3 bg-slate-900/80 rounded border border-slate-700/80">
+            <span class="text-cyber-cyan font-bold">[2. Synchronization &amp; Lock Specifications]</span><br>
+            &bull; <strong>Explicit ReentrantLock Protocol:</strong> Zero use of Java monitors or the <code class="text-white">synchronized</code> keyword. Employs <code class="text-white">java.util.concurrent.locks.ReentrantLock</code> with condition variables.<br>
+            &bull; <strong>Executor Framework:</strong> Controlled via <code class="text-white">Executors.newFixedThreadPool(19)</code> with random sleep-decay balancing operational frequency.
+          </div>
+          <div class="p-3 bg-slate-900/80 rounded border border-slate-700/80">
+            <span class="text-yellow-400 font-bold">[3. Federal Regulatory Compliance Engine]</span><br>
+            &bull; <strong>Money Laundering Suppression Act (1994):</strong> Automatic Currency Transaction Report (CTR) flagging for all deposits &gt; $450.00 and withdrawals &gt; $90.00.<br>
+            &bull; <strong>Real-Time Persistence:</strong> Atomic writing of timestamped, numbered audit records into <code class="text-white">transactions.tsv</code>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent Metrics & Lock Matrix -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-mono font-semibold text-slate-200 flex items-center gap-2">
+          <i data-lucide="list-filter" class="w-4 h-4 text-cyber-cyan"></i>
+          <span>Agent Specification &amp; Locking Matrix</span>
+        </h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs border border-slate-800">
+            <thead class="bg-cyber-900 text-cyber-emerald">
+              <tr>
+                <th class="p-2.5 border-b border-slate-800">Agent Type</th>
+                <th class="p-2.5 border-b border-slate-800">Instance Count</th>
+                <th class="p-2.5 border-b border-slate-800">Transaction Range</th>
+                <th class="p-2.5 border-b border-slate-800">Lock Requirements</th>
+                <th class="p-2.5 border-b border-slate-800">Blocking Behavior</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 text-slate-300">
+              <tr>
+                <td class="p-2.5 text-white font-bold">Depositor</td>
+                <td class="p-2.5 text-slate-400">5 Threads</td>
+                <td class="p-2.5 text-cyber-cyan">$1.00 &ndash; $600.00</td>
+                <td class="p-2.5">1 Account Lock</td>
+                <td class="p-2.5 text-cyber-emerald">Never Blocks (Signals All)</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">Withdrawer</td>
+                <td class="p-2.5 text-slate-400">10 Threads</td>
+                <td class="p-2.5 text-cyber-cyan">$1.00 &ndash; $99.00</td>
+                <td class="p-2.5">1 Account Lock</td>
+                <td class="p-2.5 text-amber-400">Blocks on Insufficient Balance</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">Transfer</td>
+                <td class="p-2.5 text-slate-400">2 Threads</td>
+                <td class="p-2.5 text-cyber-cyan">Account Debit Limit</td>
+                <td class="p-2.5">2 Locks Simultaneously</td>
+                <td class="p-2.5 text-slate-400">Non-blocking (Retries Later)</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">Internal Auditor</td>
+                <td class="p-2.5 text-slate-400">1 Thread</td>
+                <td class="p-2.5 text-slate-400">Audit Only</td>
+                <td class="p-2.5">2 Locks Simultaneously</td>
+                <td class="p-2.5 text-slate-400">Non-blocking (Retries Later)</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-white font-bold">Treasury Auditor</td>
+                <td class="p-2.5 text-slate-400">1 Thread</td>
+                <td class="p-2.5 text-slate-400">Audit Only</td>
+                <td class="p-2.5">2 Locks Simultaneously</td>
+                <td class="p-2.5 text-slate-400">Non-blocking (Retries Later)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="text-right pt-2">
+        <button onclick="closeProject2Modal()" class="px-5 py-2 rounded bg-slate-800 text-white font-mono text-xs hover:bg-slate-700 transition-colors">
+          Close Concurrency View
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL 3: AI Gateway Architecture -->
+  <div id="gateway-modal" class="fixed inset-0 z-50 hidden bg-cyber-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-panel max-w-2xl w-full rounded-2xl border border-cyber-cyan/40 p-6 sm:p-8 space-y-5 relative max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-lg font-bold text-white font-mono">AI Gateway Architecture Blueprint</h3>
+        <button onclick="closeGatewayModal()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-3 font-mono text-xs text-slate-300">
+        <p class="text-cyber-cyan">&gt; Flow Pipeline Representation:</p>
+        <div class="bg-cyber-950 p-4 rounded-xl border border-slate-800 leading-relaxed text-slate-400 space-y-1">
+          <div>[Incoming Client Request] &rarr; TLS 1.3 Termination</div>
+          <div>&nbsp;&nbsp;&darr;</div>
+          <div>[Token Bucket Rate Limiter] &rarr; Check Redis Cluster (Sliding Window)</div>
+          <div>&nbsp;&nbsp;&darr;</div>
+          <div>[PII Anonymization Pipeline] &rarr; Presidio Regex &amp; NER Masking</div>
+          <div>&nbsp;&nbsp;&darr;</div>
+          <div>[Prompt Injection Defense] &rarr; Vector Heuristic Pre-filter</div>
+          <div>&nbsp;&nbsp;&darr;</div>
+          <div>[Upstream Model Dispatch] &rarr; Azure OpenAI / AWS Bedrock</div>
+          <div>&nbsp;&nbsp;&darr;</div>
+          <div>[Audit Telemetry Stream] &rarr; Structured JSON to SIEM</div>
+        </div>
+        <p class="pt-2 text-slate-400">Built for strict zero-trust operational mandates with zero unmasked plaintext storage.</p>
+      </div>
+      <div class="text-right">
+        <button onclick="closeGatewayModal()" class="px-4 py-2 rounded bg-slate-800 text-white font-mono text-xs hover:bg-slate-700">Dismiss</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Full Printable Resume / CV Viewer -->
+  <div id="resume-modal" class="fixed inset-0 z-50 hidden bg-cyber-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+    <div class="bg-white text-slate-900 max-w-4xl w-full rounded-xl p-6 sm:p-10 shadow-2xl relative max-h-[92vh] overflow-y-auto font-sans">
+      
+      <!-- Top Action Bar -->
+      <div class="no-print flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+        <span class="text-xs font-mono font-bold uppercase text-slate-500 tracking-wider">Serge-Antoine Keou Ketchiozo &bull; Official Resume</span>
+        <div class="flex items-center space-x-3">
+          <button onclick="window.print()" class="px-3.5 py-1.5 rounded bg-slate-900 text-white text-xs font-mono font-medium hover:bg-slate-800 flex items-center gap-1.5 shadow">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print / Save PDF</span>
+          </button>
+          <button onclick="closeResumeModal()" class="p-1.5 text-slate-500 hover:text-black">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Resume Content (ATS-Optimized & Printable) -->
+      <div class="space-y-6 text-slate-800 text-xs sm:text-sm">
+        
+        <!-- Header -->
+        <div class="text-center border-b border-slate-200 pb-4">
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">SERGE-ANTOINE KEOU KETCHIOZO</h1>
+          <div class="flex flex-wrap justify-center gap-3 text-xs text-slate-600 mt-2 font-mono">
+            <span>Orlando, FL 32817</span>
+            <span>&bull;</span>
+            <span>(321) 417-4036</span>
+            <span>&bull;</span>
+            <a href="mailto:keouksa@gmail.com" class="text-blue-600 hover:underline">keouksa@gmail.com</a>
+            <span>&bull;</span>
+            <a href="mailto:se337943@ucf.edu" class="text-blue-600 hover:underline">se337943@ucf.edu</a>
+          </div>
+          <div class="flex justify-center gap-4 text-xs text-blue-600 mt-1 font-mono">
+            <a href="https://www.linkedin.com/in/serge-antoine-keou-ketchiozo-66b428137/" target="_blank" class="hover:underline">LinkedIn Profile</a>
+            <span>&bull;</span>
+            <a href="https://github.com/zongo270" target="_blank" class="hover:underline">GitHub Profile</a>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2 font-mono">Professional Summary</h2>
+          <p class="text-slate-700 leading-relaxed text-xs sm:text-sm">
+            Highly motivated Senior Information Technology student at the University of Central Florida specializing in systems software, two-tier relational database architectures, and cloud security engineering. Hands-on experience performing vulnerability assessments, intrusion detection, packet inspection, and secure operating system deployments with a foundation built in object-oriented software development. Dual-fluent in English and French.
+          </p>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3 font-mono">Education</h2>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>UNIVERSITY OF CENTRAL FLORIDA &mdash; Orlando, FL</span>
+                <span class="text-xs font-mono text-slate-600">Expected Dec 2026</span>
+              </div>
+              <div class="text-xs italic text-slate-700">Bachelor of Science in Information Technology (GPA: 3.1)</div>
+              <div class="text-xs text-slate-600 mt-1">
+                <strong>Key Coursework:</strong> Network Security &amp; Privacy, Two-Tier Database Management, Operating System Concepts, Cloud Infrastructure Architecture, Discrete Structures, Human-Computer Interaction, IT Project Management.
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>EASTERN FLORIDA STATE COLLEGE &mdash; Melbourne, FL</span>
+                <span class="text-xs font-mono text-slate-600">Completed May 2023</span>
+              </div>
+              <div class="text-xs italic text-slate-700">Associate in Science in Computer Programming and Analysis</div>
+              <div class="text-xs text-slate-600 mt-1">
+                Core coursework in Java, C#, C++, Python, relational database design, data structures, and client-server web programming.
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>LYCÉE POLYVALENT DE CACHAN &mdash; Cachan, France</span>
+                <span class="text-xs font-mono text-slate-600">Completed July 2019</span>
+              </div>
+              <div class="text-xs italic text-slate-700">French High School Diploma (Baccalauréat)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2 font-mono">Certifications &amp; Accreditations</h2>
+          <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+            <li><strong>AWS Academy Graduate &mdash; AWS Academy Cloud Architecting</strong> (Credly Verified, 2026)</li>
+            <li><strong>AWS Academy Graduate &mdash; AWS Academy Cloud Foundations</strong> (Credly Verified, 2026)</li>
+            <li><strong>CS50x: Introduction to Computer Science</strong> &mdash; Harvard University / edX (Verified July 2024)</li>
+          </ul>
+        </div>
+
+        <!-- Technical Skills -->
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2 font-mono">Technical Skills</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+            <div><strong>Languages:</strong> Java, Python, C, C++, C#, SQL, HTML5, CSS3, JavaScript, Bash</div>
+            <div><strong>Cloud &amp; Security:</strong> AWS (IAM, VPC, S3, EC2), Wireshark, CVSS v3, FTK Imager, Zero Trust</div>
+            <div><strong>Databases &amp; Systems:</strong> MySQL Server, JDBC, Redis, PostgreSQL, Two-Tier Architecture</div>
+            <div><strong>Environments:</strong> Windows 11, WSL2, Ubuntu Linux, Kali Linux, Docker, Git, VS Code</div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3 font-mono">Relevant Experience</h2>
+          
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>CYBASTION &mdash; Cybersecurity Intern</span>
+                <span class="text-xs font-mono text-slate-600">07/2025 &ndash; 08/2025</span>
+              </div>
+              <div class="text-xs italic text-slate-700 mb-1">Abidjan, Côte d'Ivoire</div>
+              <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+                <li>Executed vulnerability scans across endpoints and analyzed risks prioritizing CVSS v3 scores.</li>
+                <li>Monitored authentication logs and network packet captures (Wireshark) to detect brute-force and phishing IoCs.</li>
+                <li>Configured and automated Local Policy Object (LPO) USB restriction baselines via PowerShell scripts.</li>
+                <li>Conducted forensic investigations and secure storage imaging with FTK Imager under strict chain-of-custody.</li>
+                <li>Contributed to Defense in Depth and Zero-Trust network architecture designs for West African SOC projects.</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>CORA SUPERMARCHÉ &mdash; Inventory &amp; Logistics Associate</span>
+                <span class="text-xs font-mono text-slate-600">09/2020 &ndash; 10/2020</span>
+              </div>
+              <div class="text-xs italic text-slate-700 mb-1">Cachan, France</div>
+              <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+                <li>Managed shelf rotation and organized inventory in a fast-paced retail environment.</li>
+                <li>Communicated with French-speaking clientele to ensure rapid issue resolution and product satisfaction.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects in CV -->
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3 font-mono">Academic &amp; Systems Projects</h2>
+          <div class="space-y-2 text-xs text-slate-700">
+            <div>
+              <strong>Two-Tier Client-Server Database System with Dual GUIs &amp; RBAC:</strong>
+              Developed a Java Swing and JDBC enterprise application providing role-based query/update execution over multiple MySQL schemas (project3, bikedb), with a background transaction counting daemon logging to an operationslog schema.
+            </div>
+            <div>
+              <strong>Concurrent Multithreaded Banking Simulator (Java):</strong>
+              Architected a 19-agent concurrent simulation utilizing explicit ReentrantLocks and condition signaling to simulate bank accounts, automated CTR compliance logging, and atomic audits.
+            </div>
+            <div>
+              <strong>Hardened Multi-Tenant AI Security Gateway:</strong>
+              Engineered a FastAPI reverse proxy integrating Redis token-bucket rate-limiting, Presidio PII anonymization, and prompt injection filters.
+            </div>
+            <div>
+              <strong>World Capitals Interactive Quiz Engine (CS50x Final Project):</strong>
+              Developed an interactive JavaScript game with randomized algorithmic question queues, dynamic scoring, and countdown timer listeners.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="no-print mt-6 text-center border-t border-slate-200 pt-4">
+        <button onclick="closeResumeModal()" class="px-6 py-2 rounded bg-slate-900 text-white font-mono text-xs hover:bg-slate-800">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Client-side Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking any nav link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Skills Filter
+    function filterSkills(category) {
+      const cards = document.querySelectorAll('.skill-card');
+      const buttons = document.querySelectorAll('.skill-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-cyber-800', 'border-cyber-cyan', 'text-cyber-cyan');
+        btn.classList.add('bg-cyber-900/60', 'border-slate-800', 'text-slate-400');
+      });
+
+      // Highlight clicked button
+      event.target.classList.add('active', 'bg-cyber-800', 'border-cyber-cyan', 'text-cyber-cyan');
+      event.target.classList.remove('bg-cyber-900/60', 'border-slate-800', 'text-slate-400');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Modal Handlers
+    function openProject3Modal() {
+      document.getElementById('project3-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+    function closeProject3Modal() {
+      document.getElementById('project3-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function openProject2Modal() {
+      document.getElementById('project2-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+    function closeProject2Modal() {
+      document.getElementById('project2-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function openGatewayModal() {
+      document.getElementById('gateway-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+    function closeGatewayModal() {
+      document.getElementById('gateway-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function openResumeModal() {
+      document.getElementById('resume-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+    function closeResumeModal() {
+      document.getElementById('resume-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close on outside click
+    window.onclick = function(event) {
+      const p3Modal = document.getElementById('project3-modal');
+      const p2Modal = document.getElementById('project2-modal');
+      const gwModal = document.getElementById('gateway-modal');
+      const resModal = document.getElementById('resume-modal');
+      if (event.target === p3Modal) closeProject3Modal();
+      if (event.target === p2Modal) closeProject2Modal();
+      if (event.target === gwModal) closeGatewayModal();
+      if (event.target === resModal) closeResumeModal();
+    }
+
+    // Copy to clipboard helper
+    function copyToClipboard(text, btnElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHTML = btnElement.innerHTML;
+        btnElement.innerHTML = '<span class="text-white font-bold">Copied! ✓</span>';
+        setTimeout(() => {
+          btnElement.innerHTML = originalHTML;
+          lucide.createIcons();
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>
