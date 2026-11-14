@@ -48,20 +48,20 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
     .glass-panel {
-      background: rgba(12, 20, 39, 0.7);
+      background: rgba(12, 20, 39, 0.75);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(56, 189, 248, 0.15);
     }
     .glass-panel-hover:hover {
       border-color: rgba(0, 240, 255, 0.4);
-      box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+      box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.18);
     }
     .neon-text-cyan {
-      text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.55);
     }
     .neon-border-cyan {
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.3);
     }
     @media print {
       body * {
@@ -129,7 +129,7 @@
       </div>
 
       <!-- Mobile Menu Toggle -->
-      <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white p-2">
+      <button id="mobile-menu-btn" aria-label="Toggle mobile navigation" class="md:hidden text-slate-400 hover:text-white p-2">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
@@ -217,7 +217,7 @@
 
               <div class="font-mono text-xs space-y-3 leading-relaxed text-slate-300">
                 <p><span class="text-cyber-cyan">$</span> whoami</p>
-                <p class="text-slate-400 pl-4">Serge-Antoine Keou Ketchiozo</p>
+                <p class="text-slate-400 pl-4 font-semibold text-white">Serge-Antoine Keou Ketchiozo</p>
 
                 <p><span class="text-cyber-cyan">$</span> cat university_status.json</p>
                 <div class="bg-cyber-950/80 p-3 rounded border border-slate-800/80 pl-4 text-sky-300">
@@ -231,6 +231,14 @@
 
                 <p><span class="text-cyber-cyan">$</span> cat credentials_active.list</p>
                 <ul class="pl-4 space-y-1 text-slate-400">
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyber-emerald"></i>
+                    AWS Academy Graduate: Cloud Architecting
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyber-emerald"></i>
+                    AWS Academy Graduate: Cloud Foundations
+                  </li>
                   <li class="flex items-center gap-2">
                     <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyber-emerald"></i>
                     Harvard University CS50x Certificate
@@ -255,11 +263,11 @@
             <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">Technical Competencies</h2>
             <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Information Technology &amp; Technical Skills</h3>
           </div>
-          <div class="mt-4 md:mt-0 flex gap-2 font-mono text-xs">
-            <button onclick="filterSkills('all')" class="skill-btn active px-3 py-1.5 rounded bg-cyber-800 border border-cyber-cyan text-cyber-cyan">All</button>
-            <button onclick="filterSkills('security')" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Security & Cloud</button>
-            <button onclick="filterSkills('dev')" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Software & DB</button>
-            <button onclick="filterSkills('tools')" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Infrastructure</button>
+          <div class="mt-4 md:mt-0 flex flex-wrap gap-2 font-mono text-xs">
+            <button onclick="filterSkills('all', this)" class="skill-btn active px-3 py-1.5 rounded bg-cyber-800 border border-cyber-cyan text-cyber-cyan">All</button>
+            <button onclick="filterSkills('security', this)" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Security &amp; Cloud</button>
+            <button onclick="filterSkills('dev', this)" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Software &amp; DB</button>
+            <button onclick="filterSkills('tools', this)" class="skill-btn px-3 py-1.5 rounded bg-cyber-900/60 border border-slate-800 text-slate-400 hover:text-white">Infrastructure</button>
           </div>
         </div>
 
@@ -280,16 +288,17 @@
           </div>
 
           <!-- Skill Card 2 -->
-          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="security">
+          <div class="skill-card glass-panel rounded-xl p-6 glass-panel-hover transition-all" data-category="tools">
             <div class="w-10 h-10 rounded-lg bg-cyber-emerald/10 border border-cyber-emerald/30 flex items-center justify-center text-cyber-emerald mb-4">
               <i data-lucide="network" class="w-5 h-5"></i>
             </div>
-            <h4 class="font-bold text-white text-base mb-1">IT Infrastructure &amp; Systems</h4>
-            <p class="text-slate-400 text-xs leading-relaxed mb-4">Academic foundation in IT infrastructure, network security, system analysis and design, and operating-system concepts.</p>
+            <h4 class="font-bold text-white text-base mb-1">Enterprise Networking &amp; Cisco</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">Hands-on configuration in Cisco Packet Tracer: 802.1Q VLAN trunking, Router-on-a-Stick inter-VLAN routing, and serial WAN connections.</p>
             <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
-              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">IT Infrastructure</span>
-              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">Network Security</span>
-              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">System Analysis</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">Cisco Packet Tracer</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">Cisco IOS CLI</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">802.1Q Trunking</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 text-emerald-300">Inter-VLAN Routing</span>
             </div>
           </div>
 
@@ -329,7 +338,7 @@
               <i data-lucide="chart-no-axes-combined" class="w-5 h-5"></i>
             </div>
             <h4 class="font-bold text-white text-base mb-1">Business &amp; Data Analysis</h4>
-            <p class="text-slate-400 text-xs leading-relaxed mb-4">Interested in connecting technical systems with business needs through data analysis, process improvement, and clear reporting.</p>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">Connecting technical systems with business needs through data analysis, process improvement, and clear reporting.</p>
             <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
               <span class="px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">Microsoft Excel</span>
               <span class="px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">Process Analysis</span>
@@ -360,9 +369,9 @@
         
         <div class="mb-12">
           <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">02. Academic Foundation</h2>
-          <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">University Degree & Specialized Coursework</h3>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">University Degree &amp; Specialized Coursework</h3>
           <p class="text-slate-400 text-sm mt-2 max-w-2xl">
-            Integrating deep computational theory, network security, enterprise database systems, and cloud management.
+            Integrating computational theory, network security, enterprise database systems, and cloud management.
           </p>
         </div>
 
@@ -402,12 +411,12 @@
                   <span>Key Competency Tracks Studied at UCF:</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-400 pt-1">
-                  <div>&bull; Network Security & Privacy Architecture</div>
-                  <div>&bull; Two-Tier & Distributed Database Engineering</div>
-                  <div>&bull; Operating System Principles & WSL2/Linux</div>
-                  <div>&bull; Enterprise Systems Analysis & Design</div>
-                  <div>&bull; Discrete Structures & Algorithmics</div>
-                  <div>&bull; Technical Communication & IT Project Mgmt</div>
+                  <div>&bull; Network Security &amp; Privacy Architecture</div>
+                  <div>&bull; Two-Tier &amp; Distributed Database Engineering</div>
+                  <div>&bull; Operating System Principles &amp; WSL2/Linux</div>
+                  <div>&bull; Enterprise Systems Analysis &amp; Design</div>
+                  <div>&bull; Discrete Structures &amp; Algorithmics</div>
+                  <div>&bull; Technical Communication &amp; IT Project Mgmt</div>
                 </div>
               </div>
             </div>
@@ -440,7 +449,7 @@
               <div class="text-[11px] font-mono text-slate-400 border-t border-slate-800/80 pt-3">
                 <a href="https://www.easternflorida.edu/academics/computer-programming-and-analysis/" target="_blank" rel="noopener noreferrer" class="text-cyber-cyan hover:underline inline-flex items-center gap-1">
                   <span>EFSC Curriculum Catalog</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
                 </a>
               </div>
             </div>
@@ -492,7 +501,7 @@
               </div>
               <span class="text-xs font-mono text-orange-400">AWS Academy</span>
               <h4 class="text-lg font-bold text-white group-hover:text-cyber-cyan transition-colors mt-1 mb-2">Cloud Architecting</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">AWS Academy Graduate — Cloud Architecting. Training in cloud architecture concepts and designing solutions on AWS.</p>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">AWS Academy Graduate — Cloud Architecting. Training in cloud architecture concepts and designing resilient solutions on AWS.</p>
             </div>
             <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-cyber-cyan transition-colors">
               <span>Issuer: AWS Academy</span><i data-lucide="external-link" class="w-4 h-4"></i>
@@ -510,7 +519,7 @@
               </div>
               <span class="text-xs font-mono text-orange-400">AWS Academy</span>
               <h4 class="text-lg font-bold text-white group-hover:text-cyber-cyan transition-colors mt-1 mb-2">Cloud Foundations</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">AWS Academy Graduate — Cloud Foundations. Foundational learning in cloud computing concepts and AWS services.</p>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">AWS Academy Graduate — Cloud Foundations. Foundational learning in cloud computing concepts, IAM, and AWS services.</p>
             </div>
             <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-cyber-cyan transition-colors">
               <span>Issuer: AWS Academy</span><i data-lucide="external-link" class="w-4 h-4"></i>
@@ -556,13 +565,13 @@
           <h2 class="text-xs font-mono uppercase tracking-widest text-cyber-cyan mb-2">04. Technical Portfolio</h2>
           <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Academic &amp; Technical Projects</h3>
           <p class="text-slate-400 text-sm mt-2 max-w-2xl">
-            Applied software systems, database applications, and cybersecurity-focused academic projects.
+            Applied software systems, database applications, network designs, and cybersecurity implementations.
           </p>
         </div>
 
         <div class="space-y-10">
 
-          <!-- New Project: CyberTrack MERN Cybersecurity Platform -->
+          <!-- Project 1: CyberTrack MERN Cybersecurity Platform -->
           <article class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/50 relative overflow-hidden">
             <div class="absolute -top-24 -right-20 w-64 h-64 rounded-full bg-cyber-cyan/5 blur-3xl pointer-events-none"></div>
             <div class="flex flex-col lg:flex-row gap-8 items-start justify-between relative">
@@ -615,20 +624,20 @@
                 <div class="pt-3">
                   <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-3">Application Screenshots</div>
                   <div class="grid grid-cols-2 gap-3">
-                    <a href="assets/cybertrack-login.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors">
-                      <img src="assets/cybertrack-login.png" alt="CyberTrack login screen" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/cybertrack-login.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/cybertrack-login.png" alt="CyberTrack login screen" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>CyberTrack Login</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Login &amp; registration</span>
                     </a>
-                    <a href="assets/cybertrack-dashboard.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors">
-                      <img src="assets/cybertrack-dashboard.png" alt="CyberTrack security overview dashboard" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/cybertrack-dashboard.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/cybertrack-dashboard.png" alt="CyberTrack security overview dashboard" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Security Dashboard</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Security dashboard</span>
                     </a>
-                    <a href="assets/cybertrack-assets.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors">
-                      <img src="assets/cybertrack-assets.png" alt="CyberTrack asset inventory" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/cybertrack-assets.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/cybertrack-assets.png" alt="CyberTrack asset inventory" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Asset Inventory</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Asset inventory</span>
                     </a>
-                    <a href="assets/cybertrack-vulnerabilities.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors">
-                      <img src="assets/cybertrack-vulnerabilities.png" alt="CyberTrack vulnerability findings list" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/cybertrack-vulnerabilities.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/cybertrack-vulnerabilities.png" alt="CyberTrack vulnerability findings list" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Vulnerabilities List</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Vulnerability findings</span>
                     </a>
                   </div>
@@ -654,7 +663,98 @@
             </div>
           </article>
 
-          <!-- Project 0: CNT 4714 Project 3 Client-Server DB System -->
+          <!-- Project 2: Cisco Packet Tracer Network Design & Inter-VLAN Routing (CNT 4703C) -->
+          <article class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/40 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono font-semibold">
+                    ENTERPRISE NETWORK INFRASTRUCTURE
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-xs font-mono">
+                    CNT 4703C · CISCO PACKET TRACER
+                  </span>
+                </div>
+
+                <h4 class="text-2xl font-bold text-white tracking-tight">
+                  Enterprise Multi-VLAN Network Architecture &amp; Inter-VLAN Routing
+                </h4>
+
+                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                  Engineered and verified multi-tier enterprise network topologies using Cisco Packet Tracer. Implemented Layer 2 logical broadcast domain isolation via VLANs, 802.1Q trunk links across Cisco Catalyst 3560 switches, Router-on-a-Stick sub-interface routing on Cisco 2901 routers (`encapsulation dot1q`), unused switch port security shutdowns (`fa0/5-23`), and point-to-point Serial WAN DCE connections (clock rate 2,000,000).
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-400 pt-2">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>IEEE 802.1Q Sub-interface Routing (dot1q)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Layer 2 Access Port Segmentation &amp; Trunking</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>Dual-Router Serial Point-to-Point WAN DCE Link</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
+                    <span>VLSM CIDR Subnetting (/28, /19) &amp; ICMP Diagnostics</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Cisco Packet Tracer</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Cisco IOS CLI</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">IEEE 802.1Q</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Router-on-a-Stick</span>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Catalyst 3560 / 2901</span>
+                </div>
+
+                <div class="pt-3">
+                  <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-3">Topology Diagrams &amp; CLI Telemetry</div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <a href="assets/packet-tracer-lab6-wan.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/packet-tracer-lab6-wan.png" alt="Dual-router enterprise multi-VLAN WAN topology" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Dual Router WAN Link</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                      <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Dual-router WAN network</span>
+                    </a>
+                    <a href="assets/packet-tracer-lab5-intervlan.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/packet-tracer-lab5-intervlan.png" alt="Router-on-a-stick Inter-VLAN routing design" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Router-on-a-Stick</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                      <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Router-on-a-Stick setup</span>
+                    </a>
+                    <a href="assets/packet-tracer-lab4-trunking.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/packet-tracer-lab4-trunking.png" alt="Multi-switch 802.1Q trunking topology" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Switch 802.1Q Trunk</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                      <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Switch 802.1Q trunking</span>
+                    </a>
+                    <a href="assets/packet-tracer-cli-config.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-cyan/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/packet-tracer-cli-config.png" alt="Cisco IOS CLI sub-interface configuration output" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2300f0ff\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Cisco IOS CLI Config</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                      <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Cisco IOS CLI routing</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Protocol Implementation</div>
+                <div class="text-3xl font-extrabold text-cyber-cyan">802.1Q</div>
+                <p class="text-[11px] text-slate-400 leading-normal">
+                  Dot1Q sub-interfaces providing routing across isolated Layer 2 zones.
+                </p>
+                <div class="border-t border-slate-800 pt-3 text-left space-y-2 text-[11px] text-slate-400">
+                  <div class="flex justify-between gap-3"><span>Switches</span><span class="text-slate-200">Cisco Catalyst 3560</span></div>
+                  <div class="flex justify-between gap-3"><span>Routers</span><span class="text-slate-200">Cisco 2901 ISR</span></div>
+                  <div class="flex justify-between gap-3"><span>WAN Link</span><span class="text-slate-200">Serial DCE @ 2 Mbps</span></div>
+                  <div class="flex justify-between gap-3"><span>Subnetting</span><span class="text-slate-200">VLSM (/28 host blocks)</span></div>
+                </div>
+                <span class="inline-flex items-center justify-center gap-1.5 text-xs text-cyber-emerald pt-1">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                  <span>Simulated &amp; verified</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: CNT 4714 Project 3 Client-Server DB System -->
           <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/40 relative overflow-hidden">
             <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
               <div class="space-y-4 max-w-3xl">
@@ -718,7 +818,7 @@
             </div>
           </div>
 
-          <!-- Project 0.5: CNT 4714 Project 2 Banking Simulator -->
+          <!-- Project 4: CNT 4714 Project 2 Banking Simulator -->
           <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-emerald/40 relative overflow-hidden">
             <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
               <div class="space-y-4 max-w-3xl">
@@ -766,23 +866,24 @@
                   <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">TSV Audit Logging</span>
                 </div>
 
+                <!-- Verified Image Links with GitHub Fallbacks -->
                 <div class="pt-3">
                   <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-3">Simulation Evidence</div>
                   <div class="grid grid-cols-2 gap-3">
-                    <a href="assets/banking-simulation-output.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors">
-                      <img src="assets/banking-simulation-output.png" alt="Banking simulation console output" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/simulationfile.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/simulationfile.png" alt="Banking simulation console output" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2310b981\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Simulation Output</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Simulation output</span>
                     </a>
-                    <a href="assets/banking-internal-audit.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors">
-                      <img src="assets/banking-internal-audit.png" alt="Internal audit output" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/internalaudit.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/internalaudit.png" alt="Internal audit output" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2310b981\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Internal Audit Log</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Internal audit</span>
                     </a>
-                    <a href="assets/banking-treasury-audit.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors">
-                      <img src="assets/banking-treasury-audit.png" alt="U.S. Treasury audit output" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/UStreasury.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/UStreasury.png" alt="U.S. Treasury audit output" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2310b981\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Treasury Audit Log</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Treasury audit</span>
                     </a>
-                    <a href="assets/banking-flagged-transactions.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors">
-                      <img src="assets/banking-flagged-transactions.png" alt="Flagged transaction and blocked withdrawal output" loading="lazy" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
+                    <a href="assets/flaggedtransactionandblockedwithdraw.png" target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-slate-700 hover:border-cyber-emerald/60 transition-colors bg-cyber-900/60">
+                      <img src="https://raw.githubusercontent.com/zongo270/portfolio/main/assets/flaggedtransactionandblockedwithdraw.png" alt="Flagged transaction and blocked withdrawal output" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'225\' viewBox=\'0 0 400 225\'><rect fill=\'%230c1427\' width=\'400\' height=\'225\'/><text fill=\'%2310b981\' x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'monospace\' font-size=\'14\'>Flagged Activity</text></svg>'" class="w-full aspect-video object-cover object-top group-hover:scale-[1.02] transition-transform">
                       <span class="block px-3 py-2 bg-cyber-950/80 text-[11px] font-mono text-slate-300">Flagged activity</span>
                     </a>
                   </div>
@@ -804,114 +905,7 @@
             </div>
           </div>
 
-          <!-- Project 1: Cloud & AI Security Gateway -->
-          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/30 relative overflow-hidden">
-            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
-              <div class="space-y-4 max-w-3xl">
-                <div class="flex flex-wrap items-center gap-2">
-                  <span class="px-2.5 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono font-semibold">
-                    CLOUD SECURITY INFRASTRUCTURE
-                  </span>
-                  <span class="px-2.5 py-0.5 rounded bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-xs font-mono">
-                    ZERO TRUST
-                  </span>
-                </div>
-
-                <h4 class="text-2xl font-bold text-white tracking-tight">
-                  Hardened Multi-Tenant AI Gateway &amp; Zero-Trust Reverse Proxy
-                </h4>
-
-                <p class="text-slate-300 text-sm leading-relaxed font-light">
-                  Designed a production-ready asynchronous API reverse proxy for multi-tenant microservices. Integrates automated PII redaction (Presidio Engine), token-bucket rate limiting via Redis, structured audit logging, and prompt-injection firewall inspection before requests hit backend LLM endpoints.
-                </p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-400 pt-2">
-                  <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
-                    <span>Redis-backed Distributed Token Bucket Rate Limiting</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
-                    <span>PII Data Masking &amp; Anonymization Pipeline</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
-                    <span>Dockerized Container Security Architecture</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-cyber-emerald"></i>
-                    <span>NIST CSF Aligned Telemetry &amp; Access Control</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Python 3.11</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">FastAPI</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Redis</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Docker</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">Cloud Security</span>
-                </div>
-              </div>
-
-              <!-- Visual Architecture Card -->
-              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
-                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Gateway Latency</div>
-                <div class="text-3xl font-extrabold text-cyber-cyan">&lt; 14ms</div>
-                <p class="text-[11px] text-slate-400 leading-normal">
-                  Sub-millisecond token verification with asynchronous Redis pipelining.
-                </p>
-                <button onclick="openGatewayModal()" class="w-full py-2.5 rounded bg-cyber-800 border border-cyber-cyan/40 text-cyber-cyan text-xs font-bold hover:bg-cyber-700 transition-all flex items-center justify-center space-x-1.5">
-                  <i data-lucide="eye" class="w-4 h-4"></i>
-                  <span>Architecture Deep Dive</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Nile Dot Com E-Store & Inventory DB -->
-          <div class="glass-panel rounded-2xl p-6 sm:p-8 border-slate-800 relative">
-            <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
-              <div class="space-y-4 max-w-3xl">
-                <div class="flex flex-wrap items-center gap-2">
-                  <span class="px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono font-semibold">
-                    ENTERPRISE JAVA APPLICATION
-                  </span>
-                  <span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 text-xs font-mono">
-                    GUI &bull; INVENTORY TRANSACTION LOGIC
-                  </span>
-                </div>
-
-                <h4 class="text-2xl font-bold text-white tracking-tight">
-                  Nile Dot Com E-Store Application &amp; Automated Ledger System
-                </h4>
-
-                <p class="text-slate-300 text-sm leading-relaxed font-light">
-                  Constructed a standalone Java GUI desktop application managing shopping cart states, item lookups, automated subtotaling with state sales tax calculation, and synchronized transaction recording in an audit-ready CSV ledger. Built with robust input validation, dynamic inventory management, and invoice generation.
-                </p>
-
-                <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px]">
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">Java Swing</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">AWT Event Dispatch</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">CSV Ledger</span>
-                  <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">Transaction Logging</span>
-                </div>
-              </div>
-
-              <div class="w-full lg:w-72 shrink-0 bg-cyber-950/80 p-5 rounded-xl border border-slate-800 text-center font-mono space-y-3">
-                <div class="text-[11px] text-slate-400 uppercase tracking-wider">Design Paradigm</div>
-                <div class="text-lg font-bold text-white">MVC Event Architecture</div>
-                <p class="text-[11px] text-slate-400 leading-normal">
-                  Strict separation of view controllers, calculation engine, and invoice persistence.
-                </p>
-                <div class="text-xs text-cyber-emerald flex items-center justify-center gap-1">
-                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                  <span>Completed &amp; Validated</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: World Capitals Interactive Quiz (Harvard CS50x Capstone) -->
+          <!-- Project 5: Harvard CS50x Final Capstone -->
           <div class="glass-panel rounded-2xl p-6 sm:p-8 border-slate-800 relative">
             <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
               <div class="space-y-4 max-w-3xl">
@@ -968,7 +962,6 @@
           
           <!-- Experience 1: Cybastion -->
           <div class="relative group">
-            <!-- Timeline Node Indicator -->
             <div class="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-cyber-950 border-2 border-cyber-cyan group-hover:bg-cyber-cyan transition-colors"></div>
 
             <div class="glass-panel rounded-2xl p-6 sm:p-8 border-cyber-cyan/30">
@@ -992,7 +985,6 @@
                   <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
                   <span><strong>Log Management &amp; Forensic Analysis:</strong> Analyzed system logs to identify Indicators of Compromise (IOCs), brute-force vectors, and phishing attempts, and prepared summary reports for leadership.</span>
                 </li>
-
                 <li class="flex items-start gap-2">
                   <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan shrink-0 mt-0.5"></i>
                   <span><strong>Architecture &amp; Traffic Inspection:</strong> Evaluated network traffic patterns using Wireshark and contributed to Zero-Trust and Defense-in-Depth architectural design.</span>
@@ -1288,14 +1280,14 @@
                 <td class="p-2.5 text-white font-bold">Internal Auditor</td>
                 <td class="p-2.5 text-slate-400">1 Thread</td>
                 <td class="p-2.5 text-slate-400">Audit Only</td>
-                <td class="p-2.5">2 Locks Simultaneously</td>
+                <td class="p-2.5">All Account Locks</td>
                 <td class="p-2.5 text-slate-400">Non-blocking (Retries Later)</td>
               </tr>
               <tr>
                 <td class="p-2.5 text-white font-bold">Treasury Auditor</td>
                 <td class="p-2.5 text-slate-400">1 Thread</td>
                 <td class="p-2.5 text-slate-400">Audit Only</td>
-                <td class="p-2.5">2 Locks Simultaneously</td>
+                <td class="p-2.5">All Account Locks</td>
                 <td class="p-2.5 text-slate-400">Non-blocking (Retries Later)</td>
               </tr>
             </tbody>
@@ -1314,38 +1306,6 @@
         </button>
       </div>
 
-    </div>
-  </div>
-
-  <!-- MODAL 3: AI Gateway Architecture -->
-  <div id="gateway-modal" class="fixed inset-0 z-50 hidden bg-cyber-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-    <div class="glass-panel max-w-2xl w-full rounded-2xl border border-cyber-cyan/40 p-6 sm:p-8 space-y-5 relative max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="text-lg font-bold text-white font-mono">AI Gateway Architecture Blueprint</h3>
-        <button onclick="closeGatewayModal()" class="text-slate-400 hover:text-white p-1">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <div class="space-y-3 font-mono text-xs text-slate-300">
-        <p class="text-cyber-cyan">&gt; Flow Pipeline Representation:</p>
-        <div class="bg-cyber-950 p-4 rounded-xl border border-slate-800 leading-relaxed text-slate-400 space-y-1">
-          <div>[Incoming Client Request] &rarr; TLS 1.3 Termination</div>
-          <div>&nbsp;&nbsp;&darr;</div>
-          <div>[Token Bucket Rate Limiter] &rarr; Check Redis Cluster (Sliding Window)</div>
-          <div>&nbsp;&nbsp;&darr;</div>
-          <div>[PII Anonymization Pipeline] &rarr; Presidio Regex &amp; NER Masking</div>
-          <div>&nbsp;&nbsp;&darr;</div>
-          <div>[Prompt Injection Defense] &rarr; Vector Heuristic Pre-filter</div>
-          <div>&nbsp;&nbsp;&darr;</div>
-          <div>[Upstream Model Dispatch] &rarr; Azure OpenAI / AWS Bedrock</div>
-          <div>&nbsp;&nbsp;&darr;</div>
-          <div>[Audit Telemetry Stream] &rarr; Structured JSON to SIEM</div>
-        </div>
-        <p class="pt-2 text-slate-400">Built for strict zero-trust operational mandates with zero unmasked plaintext storage.</p>
-      </div>
-      <div class="text-right">
-        <button onclick="closeGatewayModal()" class="px-4 py-2 rounded bg-slate-800 text-white font-mono text-xs hover:bg-slate-700">Dismiss</button>
-      </div>
     </div>
   </div>
 
@@ -1379,8 +1339,6 @@
           <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">SERGE-ANTOINE KEOU KETCHIOZO</h1>
           <div class="flex flex-wrap justify-center gap-3 text-xs text-slate-600 mt-2 font-mono">
             <span>Orlando, FL 32817</span>
-            <span>&bull;</span>
-            <span>(321) 417-4036</span>
             <span>&bull;</span>
             <a href="mailto:sergekeouketchiozo@gmail.com" class="text-blue-600 hover:underline">sergekeouketchiozo@gmail.com</a>
             <span>&bull;</span>
@@ -1441,6 +1399,8 @@
         <div>
           <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2 font-mono">Certifications &amp; Accreditations</h2>
           <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+            <li><strong>AWS Academy Graduate &mdash; Cloud Architecting</strong> (Credly Verified, 2026)</li>
+            <li><strong>AWS Academy Graduate &mdash; Cloud Foundations</strong> (Credly Verified, 2026)</li>
             <li><strong>CS50x: Introduction to Computer Science</strong> &mdash; Harvard University / edX (Verified July 2024)</li>
           </ul>
         </div>
@@ -1450,7 +1410,8 @@
           <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2 font-mono">Technical Skills</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
             <div><strong>Languages &amp; Code:</strong> Python, SQL, Java, C#, C, C++, HTML/CSS, JavaScript, Data Structures</div>
-            <div><strong>Tools &amp; Analytics:</strong> Microsoft Excel, System Analysis &amp; Design, Wireshark, Kali Linux, PowerPoint</div>
+            <div><strong>Networking &amp; Security:</strong> Cisco Packet Tracer, 802.1Q Trunking, Inter-VLAN Routing, Wireshark, Kali Linux</div>
+            <div><strong>Tools &amp; Analytics:</strong> Microsoft Excel, System Analysis &amp; Design, PowerPoint</div>
             <div><strong>Languages:</strong> French (Native), English (Professional Academic Proficiency)</div>
           </div>
         </div>
@@ -1486,14 +1447,25 @@
           </div>
         </div>
 
-        <!-- Projects in CV -->
+        <!-- Academic Projects -->
         <div>
-          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3 font-mono">Academic Project</h2>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3 font-mono">Academic &amp; Technical Projects</h2>
           <div class="space-y-2 text-xs text-slate-700">
             <div>
-              <strong>CS50x Final Project:</strong>
-              Engineered and deployed a full-stack final project codebase as part of Harvard University's CS50x program.
-              <a href="https://github.com/zongo270/my-cs50-project" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">View project on GitHub</a>.
+              <strong>CyberTrack — Cybersecurity Asset &amp; Vulnerability Management:</strong>
+              Engineered a full-stack MERN application for scoped IT inventory management, vulnerability CVE/CVSS tracking, and automated remediation workflows.
+            </div>
+            <div>
+              <strong>Enterprise Multi-VLAN Network Architecture &amp; Inter-VLAN Routing (Cisco Packet Tracer):</strong>
+              Designed dual-router and multi-switch topologies implementing IEEE 802.1Q trunking, Router-on-a-Stick sub-interface routing, switch port security, serial WAN connections, and VLSM subnetting.
+            </div>
+            <div>
+              <strong>Two-Tier Client-Server Database System with Dual GUIs &amp; RBAC:</strong>
+              Developed a Java Swing and JDBC enterprise application providing role-based query execution over multiple MySQL schemas with real-time audit telemetry.
+            </div>
+            <div>
+              <strong>Concurrent Multithreaded Banking Simulator (Java):</strong>
+              Architected a 19-agent concurrent simulation utilizing explicit ReentrantLocks and condition signaling to simulate bank accounts, automated CTR compliance logging, and atomic audits.
             </div>
           </div>
         </div>
@@ -1529,7 +1501,7 @@
     });
 
     // Skills Filter
-    function filterSkills(category) {
+    function filterSkills(category, btnElement) {
       const cards = document.querySelectorAll('.skill-card');
       const buttons = document.querySelectorAll('.skill-btn');
 
@@ -1538,9 +1510,10 @@
         btn.classList.add('bg-cyber-900/60', 'border-slate-800', 'text-slate-400');
       });
 
-      // Highlight clicked button
-      event.target.classList.add('active', 'bg-cyber-800', 'border-cyber-cyan', 'text-cyber-cyan');
-      event.target.classList.remove('bg-cyber-900/60', 'border-slate-800', 'text-slate-400');
+      if (btnElement) {
+        btnElement.classList.add('active', 'bg-cyber-800', 'border-cyber-cyan', 'text-cyber-cyan');
+        btnElement.classList.remove('bg-cyber-900/60', 'border-slate-800', 'text-slate-400');
+      }
 
       cards.forEach(card => {
         if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -1572,16 +1545,6 @@
       document.body.style.overflow = 'auto';
     }
 
-    function openGatewayModal() {
-      document.getElementById('gateway-modal').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      lucide.createIcons();
-    }
-    function closeGatewayModal() {
-      document.getElementById('gateway-modal').classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
     function openResumeModal() {
       document.getElementById('resume-modal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -1596,26 +1559,42 @@
     window.onclick = function(event) {
       const p3Modal = document.getElementById('project3-modal');
       const p2Modal = document.getElementById('project2-modal');
-      const gwModal = document.getElementById('gateway-modal');
       const resModal = document.getElementById('resume-modal');
       if (event.target === p3Modal) closeProject3Modal();
       if (event.target === p2Modal) closeProject2Modal();
-      if (event.target === gwModal) closeGatewayModal();
       if (event.target === resModal) closeResumeModal();
     }
 
     // Copy to clipboard helper
     function copyToClipboard(text, btnElement) {
-      navigator.clipboard.writeText(text).then(() => {
-        const originalHTML = btnElement.innerHTML;
-        btnElement.innerHTML = '<span class="text-white font-bold">Copied! ✓</span>';
-        setTimeout(() => {
-          btnElement.innerHTML = originalHTML;
-          lucide.createIcons();
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showCopySuccess(btnElement);
+        }).catch(() => {
+          fallbackCopy(text, btnElement);
+        });
+      } else {
+        fallbackCopy(text, btnElement);
+      }
+    }
+
+    function fallbackCopy(text, btnElement) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showCopySuccess(btnElement);
+    }
+
+    function showCopySuccess(btnElement) {
+      const originalHTML = btnElement.innerHTML;
+      btnElement.innerHTML = '<span class="text-white font-bold">Copied! ✓</span>';
+      setTimeout(() => {
+        btnElement.innerHTML = originalHTML;
+        lucide.createIcons();
+      }, 2000);
     }
   </script>
 </body>
